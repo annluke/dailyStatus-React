@@ -11,7 +11,7 @@ class StatusList extends Component {
           project={s.projectName}
           type={s.activityType}
           hours={s.hours}
-          minutes={s.minutes} 
+          minutes={s.minutes}
           description={s.statusDescription}/>
       );
     });
