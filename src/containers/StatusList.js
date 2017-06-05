@@ -3,8 +3,7 @@ import Status from '../components/Status';
 
 class StatusList extends Component {
   render() {
-    var rows = this.props.status.map(function(s) {
-      return(
+    var rows = this.props.status.map(s => (
         <Status
           key={s.date}
           date={s.date}
@@ -13,8 +12,8 @@ class StatusList extends Component {
           hours={s.hours}
           minutes={s.minutes}
           description={s.statusDescription}/>
-      );
-    });
+      )
+    );
     return(
       <ul className="status-list-container">
         {rows}

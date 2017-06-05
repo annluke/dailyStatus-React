@@ -29,32 +29,12 @@ class FormContainer extends Component {
       minutesList : ['00', '15', '30', '45'],
       statusDescription : ''
     }
-    this.handleDateSelect = this.handleDateSelect.bind(this);
-    this.handleProjectSelect = this.handleProjectSelect.bind(this);
-    this.handleTypeSelect = this.handleTypeSelect.bind(this);
-    this.handleHourSelect = this.handleHourSelect.bind(this);
-    this.handleMinuteSelect = this.handleMinuteSelect.bind(this);
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleFieldChange = this.handleFieldChange.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
-  handleDateSelect(event) {
-    this.setState({ date : event.target.value });
-  }
-  handleProjectSelect(event) {
-    this.setState({ projectName : event.target.value })
-  }
-  handleTypeSelect(event) {
-    this.setState({ activityType : event.target.value })
-  }
-  handleHourSelect(event) {
-    this.setState({ hours : event.target.value })
-  }
-  handleMinuteSelect(event) {
-    this.setState({ minutes : event.target.value })
-  }
-  handleDescriptionChange(event) {
-    this.setState({statusDescription : event.target.value });
+  handleFieldChange(event) {
+    this.setState({[event.target.name] : event.target.value })
   }
   handleClearForm(event) {
     event.preventDefault();
@@ -89,23 +69,23 @@ class FormContainer extends Component {
         title={'Date'}
         name={'date'}
         placeholder={'Choose date'}
-        controlFunc={this.handleDateSelect}
+        controlFunc={this.handleFieldChange}
         options={this.state.dateOptions}
         selectedOption={this.state.date} />
       <Select
         className="project-select"
         title={'Project'}
-        name={'project'}
+        name={'projectName'}
         placeholder={'Choose project'}
-        controlFunc={this.handleProjectSelect}
+        controlFunc={this.handleFieldChange}
         options={this.state.projectList}
         selectedOption={this.state.projectName} />
       <Select
         className="common-select"
         title={'Activity Type'}
-        name={'type'}
+        name={'activityType'}
         placeholder={'Select activity type'}
-        controlFunc={this.handleTypeSelect}
+        controlFunc={this.handleFieldChange}
         options={this.state.typeList}
         selectedOption={this.state.activityType} />
       <Select
@@ -113,7 +93,7 @@ class FormContainer extends Component {
         title={'Time (hours)'}
         name={'hours'}
         placeholder={'Select time'}
-        controlFunc={this.handleHourSelect}
+        controlFunc={this.handleFieldChange}
         options={this.state.hoursList}
         selectedOption={this.state.hours} />
       <Select
@@ -121,7 +101,7 @@ class FormContainer extends Component {
         title={'(minutes)'}
         name={'minutes'}
         placeholder={'Select time'}
-        controlFunc={this.handleMinuteSelect}
+        controlFunc={this.handleFieldChange}
         options={this.state.minutesList}
         selectedOption={this.state.minutes} />
       <TextArea
@@ -129,8 +109,8 @@ class FormContainer extends Component {
         rows={5}
         resize={false}
         content={this.state.statusDescription}
-        name={'description'}
-        controlFunc={this.handleDescriptionChange}
+        name={'statusDescription'}
+        controlFunc={this.handleFieldChange}
         placeholder={'Enter description'} />
       <div className="btn-wrapper">
         <input
