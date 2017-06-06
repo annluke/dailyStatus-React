@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import TextArea from '../components/TextArea';
-import Select from '../components/Select';
+import TextArea from '../components/textarea';
+import Select from '../components/select';
 
 class FormContainer extends Component {
   constructor() {

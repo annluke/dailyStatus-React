@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Status from '../components/Status';
+import Status from '../components/status';
 
 class StatusList extends Component {
   render() {

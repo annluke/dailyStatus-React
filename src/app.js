@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import FormContainer from './containers/FormContainer';
-import StatusList from './containers/StatusList';
-import Header from './components/Header';
+import FormContainer from './containers/formContainer';
+import StatusList from './containers/statusList';
+import Header from './components/header';
 
-import './App.css';
+import './app.css';
 
 class App extends Component {
   constructor() {
