@@ -10,37 +10,55 @@ class App extends Component {
     super();
     this.state = {
       data : [
-        {date : '20/05/17', projectName : 'WHS Commitment Platform', activityType : 'Coding', hours : '08', minutes : '00', statusDescription: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
-        {date : '21/05/17', projectName : 'WHS Commitment Platform', activityType : 'Coding', hours : '09', minutes : '30', statusDescription: "Test Description2"}
+        {
+          date : '20/05/17',
+          projectName : 'WHS Commitment Platform',
+          activityType : 'Coding',
+          hours : '08',
+          minutes : '00',
+          statusDescription: "Nunc sit amet lacus vitae massa ultricies dapibus. Nam velit orci, iaculis gravida nibh vel, rhoncus fringilla ante. Vestibulum massa est, tempor eget orci sed, dignissim convallis dui."
+        },
+        {
+          date : '21/05/17',
+          projectName : 'WHS Commitment Platform',
+          activityType : 'Coding',
+          hours : '09',
+          minutes : '30',
+          statusDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        }
       ]
     }
     this.handleSubmittedData = this.handleSubmittedData.bind(this);
+    this.addTime = this.addTime.bind(this);
+  }
+  addTime(firstTime, secondTime) {
+    firstTime.min += secondTime.min;
+    if(firstTime.min >= 60) {
+      firstTime.hrs += 1;
+      firstTime.min -= 60;
+    }
+    firstTime.hrs += secondTime.hrs;
+    return firstTime;
   }
   handleSubmittedData(statusData) {
     let submitStatus = true,
         totalHours = 0,
         totalMinutes = 0,
         enteredHours = Number.parseInt(statusData.hours),
-        enteredMinutes = Number.parseInt(statusData.minutes);
+        enteredMinutes = Number.parseInt(statusData.minutes),
+        totalTime = { hrs : totalHours, min : totalMinutes},
+        enteredTime = { hrs : enteredHours, min : enteredMinutes},
+        maxLimit = 16;
 
     //total time spent
     for (const item of this.state.data) {
       if(item.date === statusData.date) {
-        totalMinutes += Number.parseInt(item.minutes);
-        if(totalMinutes >= 60) {
-          totalHours += 1;
-          totalMinutes -= 60;
-        }
-        totalHours += Number.parseInt(item.hours);
+        var itemTime = {hrs : Number.parseInt(item.hours), min : Number.parseInt(item.minutes)};
+        totalTime = this.addTime(totalTime, itemTime);
       }
     }
-    totalMinutes += enteredMinutes;
-    if(totalMinutes >= 60) {
-      totalHours += 1;
-      totalMinutes -= 60;
-    }
-    totalHours += enteredHours;
-    if((totalHours) > 16) {
+    totalTime = this.addTime(totalTime, enteredTime);
+    if((totalTime.hrs) > maxLimit) {
       alert('Limit exceeded for the day');
       submitStatus = false;
     }

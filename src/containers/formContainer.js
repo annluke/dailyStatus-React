@@ -7,17 +7,18 @@ class FormContainer extends Component {
   constructor() {
     super();
     const fromDate = moment().subtract(7, 'days').format('MM/DD/YY');
-    const toDate = moment().format('MM/DD/YY');
+    const toDate = moment().format('DD/MM/YY');
     var start = new Date(fromDate);
     var end = new Date(toDate);
     var dateList = [];
     while(start < end) {
-     dateList.push(moment(start).format('MM/DD/YY'));
+     dateList.push(moment(start).format('DD/MM/YY'));
      var newDate = start.setDate(start.getDate() + 1);
      start = new Date(newDate);
     }
+    var dateListLength = dateList.length;
     this.state = {
-      date : toDate,
+      date : dateList[dateListLength-1],
       dateOptions : dateList,
       projectName : 'WHS Commitment Platform',
       projectList : ['WHS Commitment Platform', 'BCtA Toolkit', 'Smart Apps', 'Private Fly', 'Optimize'],
