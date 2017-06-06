@@ -17,7 +17,7 @@ class FormContainer extends Component {
      start = new Date(newDate);
     }
     this.state = {
-      date : fromDate,
+      date : toDate,
       dateOptions : dateList,
       projectName : 'WHS Commitment Platform',
       projectList : ['WHS Commitment Platform', 'BCtA Toolkit', 'Smart Apps', 'Private Fly', 'Optimize'],
@@ -106,8 +106,6 @@ class FormContainer extends Component {
         selectedOption={this.state.minutes} />
       <TextArea
         title={'Status Description'}
-        rows={5}
-        resize={false}
         content={this.state.statusDescription}
         name={'statusDescription'}
         controlFunc={this.handleFieldChange}

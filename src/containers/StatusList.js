@@ -3,9 +3,9 @@ import Status from '../components/Status';
 
 class StatusList extends Component {
   render() {
-    var rows = this.props.status.map(s => (
+    var rows = this.props.status.map((s,index) => (
         <Status
-          key={s.date}
+          key={index}
           date={s.date}
           project={s.projectName}
           type={s.activityType}
@@ -14,6 +14,7 @@ class StatusList extends Component {
           description={s.statusDescription}/>
       )
     );
+    rows.reverse();
     return(
       <ul className="status-list-container">
         {rows}

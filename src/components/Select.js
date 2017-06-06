@@ -23,8 +23,8 @@ const Select = (props) => (
 
 Select.propTypes = {
 	name: PropTypes.string.isRequired,
-	options: PropTypes.array.isRequired,
-	selectedOption: PropTypes.string,
+	options: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+	selectedOption: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	controlFunc: PropTypes.func.isRequired,
 	placeholder: PropTypes.string
 };

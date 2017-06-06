@@ -6,9 +6,7 @@ const TextArea = (props) => (
     <label className="form-label">{props.title}</label>
     <textarea
       className="form-input"
-      style={props.resize ? null : {resize: 'none'}}
       name={props.name}
-      rows={props.rows}
       value={props.content}
       placeholder={props.placeholder}
       onChange={props.controlFunc} />
@@ -17,10 +15,8 @@ const TextArea = (props) => (
 
 TextArea.propTypes = {
   title: PropTypes.string.isRequired,
-  rows: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  resize: PropTypes.bool,
   controlFunc: PropTypes.func.isRequired
 };
 

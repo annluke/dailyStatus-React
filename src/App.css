@@ -156,7 +156,7 @@ select {
 }
 @keyframes slideIn {
   0% {
-    transform: translateY(50%);
+    transform: translateY(20px);
   }
   100% {
     transform: translateY(0);

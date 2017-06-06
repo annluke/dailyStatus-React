@@ -17,10 +17,76 @@ class App extends Component {
     this.handleSubmittedData = this.handleSubmittedData.bind(this);
   }
   handleSubmittedData(statusData) {
-    this.state.data.push(statusData);
-    this.setState({
-      data : this.state.data
-    });
+    let submitStatus = true,
+        totalHours = 0,
+        totalMinutes = 0,
+        enteredHours = Number.parseInt(statusData.hours),
+        enteredMinutes = Number.parseInt(statusData.minutes);
+
+    //total time spent
+    for (const item of this.state.data) {
+      if(item.date === statusData.date) {
+        totalMinutes += Number.parseInt(item.minutes);
+        if(totalMinutes >= 60) {
+          totalHours += 1;
+          totalMinutes -= 60;
+        }
+        totalHours += Number.parseInt(item.hours);
+      }
+    }
+    totalMinutes += enteredMinutes;
+    if(totalMinutes >= 60) {
+      totalHours += 1;
+      totalMinutes -= 60;
+    }
+    totalHours += enteredHours;
+    if((totalHours) > 16) {
+      alert('Limit exceeded for the day');
+      submitStatus = false;
+    }
+
+    //validate date
+    if(statusData.date === '') {
+      alert('Please select date');
+      submitStatus = false;
+    }
+
+    //validate project name
+    if(statusData.projectName === '') {
+      alert('Please select project');
+      submitStatus = false;
+    }
+
+    //validate activity type
+    if(statusData.activityType === '') {
+      alert('Please select activity type');
+      submitStatus = false;
+    }
+
+    //validate hours
+    if(statusData.hours === '') {
+      alert('Please select hours');
+      submitStatus = false;
+    }
+
+    //validate minutes
+    if(statusData.minutes === '') {
+      alert('Please select minutes');
+      submitStatus = false;
+    }
+
+    //validate description
+    if(statusData.statusDescription === '') {
+      alert('Please enter activity description');
+      submitStatus = false;
+    }
+
+    if(submitStatus) {
+      this.state.data.push(statusData);
+      this.setState({
+        data : this.state.data
+      });
+    }
   }
   render() {
     return (
