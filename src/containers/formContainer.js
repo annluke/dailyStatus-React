@@ -11,7 +11,7 @@ class FormContainer extends Component {
     var start = new Date(fromDate);
     var end = new Date(toDate);
     var dateList = [];
-    while(start < end) {
+    while(start <= end) {
      dateList.push(moment(start).format('DD/MM/YYYY'));
      var newDate = start.setDate(start.getDate() + 1);
      start = new Date(newDate);
