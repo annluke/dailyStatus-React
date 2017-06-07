@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       data : [
         {
-          date : '20/05/17',
+          date : '20/05/2017',
           projectName : 'WHS Commitment Platform',
           activityType : 'Coding',
           hours : '08',
@@ -19,7 +19,7 @@ class App extends Component {
           statusDescription: "Nunc sit amet lacus vitae massa ultricies dapibus. Nam velit orci, iaculis gravida nibh vel, rhoncus fringilla ante. Vestibulum massa est, tempor eget orci sed, dignissim convallis dui."
         },
         {
-          date : '21/05/17',
+          date : '21/05/2017',
           projectName : 'WHS Commitment Platform',
           activityType : 'Coding',
           hours : '09',

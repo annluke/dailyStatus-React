@@ -7,12 +7,12 @@ class FormContainer extends Component {
   constructor() {
     super();
     const fromDate = moment().subtract(7, 'days').format('MM/DD/YY');
-    const toDate = moment().format('DD/MM/YY');
+    const toDate = moment().format('MM/DD/YY');
     var start = new Date(fromDate);
     var end = new Date(toDate);
     var dateList = [];
     while(start < end) {
-     dateList.push(moment(start).format('DD/MM/YY'));
+     dateList.push(moment(start).format('DD/MM/YYYY'));
      var newDate = start.setDate(start.getDate() + 1);
      start = new Date(newDate);
     }
